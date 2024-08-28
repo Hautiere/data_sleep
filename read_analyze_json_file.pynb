@@ -1,0 +1,41 @@
+# Cell 1: Import des bibliothèques nécessaires
+import json
+import pandas as pd
+
+# Cell 2: Charger le fichier JSON
+def load_json_file(file_path):
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+    return data
+
+# Cell 3: Afficher un extrait des données pour visualiser la structure
+def display_json_sample(data, sample_size=2):
+    return data[:sample_size]
+
+# Cell 4: Convertir les données JSON en DataFrame pandas
+def json_to_dataframe(data):
+    df = pd.json_normalize(data)
+    return df
+
+# Cell 5: Analyser la structure des données et les premières lignes du DataFrame
+def analyze_dataframe(df):
+    print("Structure des données:")
+    print(df.info())
+    print("\nPremières lignes du DataFrame:")
+    return df.head()
+
+# Cell 6: Charger, visualiser et analyser le fichier JSON
+# Remplacez 'votre_fichier.json' par le chemin réel vers votre fichier JSON
+file_path = 'votre_fichier.json'  # Mettre à jour avec le bon chemin
+data = load_json_file(file_path)
+
+# Afficher un extrait du contenu JSON
+sample_data = display_json_sample(data)
+print("Extrait des données JSON:")
+print(sample_data)
+
+# Convertir le JSON en DataFrame
+df = json_to_dataframe(data)
+
+# Analyser la structure du DataFrame
+analyze_dataframe(df)
